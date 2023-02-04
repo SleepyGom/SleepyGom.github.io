@@ -9,7 +9,35 @@ function App() {
   
     const [mainTitle , setMainTitle] = useState('');
     let [count, setCount] = useState<number>(0);
-    const completionWord = `나를 위한,\n 나로 가득한,\n 건강한 라이프`
+    const completionWord = `나를 위한,\n 나로 가득한,\n 건강한 라이프.`;
+
+    let [style , setStyle] = useState(true);
+    let [blinkcount, setBlinkCount] = useState(0);
+
+
+
+    useEffect(()=>{
+      const deleteinterval = setInterval(()=>{
+        setMainTitle(mainTitle.slice(0,-1))
+      },100)
+      return () => clearInterval(deleteinterval)
+    })  
+
+    useEffect(()=>{
+      const blinkInterval = setInterval(()=>{
+        setBlinkCount(blinkcount + 1)
+        console.log(blinkcount)
+      }, 500);
+      if(blinkcount % 2 !== 0){
+        setStyle(false)
+      }else{
+        setStyle(true)
+      }
+      if(blinkcount === 6){
+        clearInterval(blinkInterval);
+      }
+      return () => clearInterval(blinkInterval)
+    });
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -18,9 +46,12 @@ function App() {
       }, 100);
       if(count === completionWord.length)  {  // Count를 따로 두지 않고 Text.length 체크도 가능
           clearInterval(interval); // 문자열 체크를 통해 setInterval을 해제합니다
+          
       }
       return () => clearInterval(interval); // 언마운트시 setInterval을 해제합니다
-     })
+     });
+
+     
 
 
     return (
@@ -50,7 +81,7 @@ function App() {
       <body>
         <div className='inner'>
           <div className ='text'>
-            <h4>{mainTitle}<i></i></h4>
+            <h4>{mainTitle}<i style={style ? {display : 'inline'} : {display : 'none'}}></i></h4>
           </div>
           <div className ='visual'>
             <img src='img/morphing2.gif'/>

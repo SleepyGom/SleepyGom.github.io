@@ -109,7 +109,7 @@ header{
   line-height:100px;
   font-weight:bold;
   position:absolute;
-  top:200px;
+  top:180px;
   left:100px;
 }
 .text h4{
@@ -117,4 +117,5 @@ header{
 }
 .text i{
   border : 4px solid rgb(255, 242, 0);
+  margin-left : 5px;
 }
