@@ -9,24 +9,42 @@ function App() {
   
     const [mainTitle , setMainTitle] = useState('');
     let [count, setCount] = useState<number>(0);
-    const completionWord = `나를 위한,\n 나로 가득한,\n 건강한 라이프.`;
+    const completionWord = [`스포츠가 \n 문화와 만난다면?`,`나를 위한,\n나로 가득한,\n건강한 라이프스타일`,`함께 만들어가는\n스포츠 세상`,`카카오VX는\n 기술과 스포츠를 결합하여\n 건강한 세상을 만들어갑니다.`,``];
+    
+    const [after, setAfter] = useState(false);
+    const [secondafter,setSecondAfter] = useState(false);
+    const [firstafter,setFirstAfter] = useState(true);
+    let [i, setI] = useState(0);
 
     let [style , setStyle] = useState(true);
     let [blinkcount, setBlinkCount] = useState(0);
 
-
-
+    //글자 지우기
     useEffect(()=>{
+      if(secondafter === true){
       const deleteinterval = setInterval(()=>{
         setMainTitle(mainTitle.slice(0,-1))
-      },100)
-      return () => clearInterval(deleteinterval)
-    })  
+        setCount(count -1);
+        if(count === 0){
+          clearInterval(deleteinterval);
+          setFirstAfter(true);
+          setMainTitle('');
+          setCount(0);
+          setSecondAfter(false)
 
+        }
+        
+      },70)      
+      return () => clearInterval(deleteinterval)
+    } 
+    });
+    
+
+    //커서 깜빡임
     useEffect(()=>{
+      if(after === true){
       const blinkInterval = setInterval(()=>{
         setBlinkCount(blinkcount + 1)
-        console.log(blinkcount)
       }, 500);
       if(blinkcount % 2 !== 0){
         setStyle(false)
@@ -35,21 +53,37 @@ function App() {
       }
       if(blinkcount === 6){
         clearInterval(blinkInterval);
+        setBlinkCount(0);
+        setSecondAfter(true);
+        setAfter(false);
+
       }
       return () => clearInterval(blinkInterval)
+     }
     });
+  
 
+    //글자 채우기
     useEffect(() => {
+      if(firstafter === true){
       const interval = setInterval(() => {
-          setMainTitle(mainTitle + completionWord[count]); // 이전 set한 문자 + 다음 문자
+          setMainTitle(mainTitle + completionWord[i][count]); // 이전 set한 문자 + 다음 문자
           setCount(count + 1); // 개수 만큼 체크 
-      }, 100);
-      if(count === completionWord.length)  {  // Count를 따로 두지 않고 Text.length 체크도 가능
+      }, 120);
+      if(count === completionWord[i].length)  {  // Count를 따로 두지 않고 Text.length 체크도 가능
           clearInterval(interval); // 문자열 체크를 통해 setInterval을 해제합니다
-          
+          setAfter(true);
+          setFirstAfter(false);
+          setSecondAfter(false);
+          setI(i+1);
+          console.log(i)
+      }
+      if(i === completionWord.length-1){
+        setI(0);
       }
       return () => clearInterval(interval); // 언마운트시 setInterval을 해제합니다
-     });
+     }
+    });
 
      
 
@@ -87,6 +121,22 @@ function App() {
             <img src='img/morphing2.gif'/>
           </div>
         </div>
+        <section className ='container'>
+            <span className='img-box'>
+              <img src = 'img/scaleBg.jpg'/>
+            </span>
+            <div className='textBox'>
+            <h3>스포츠 디지털 트랜스포메이션<br/> 컴퍼니 카카오 VX</h3>
+            <p>카카오 VX는 카카오의 스포츠 전문 계열회사로 스크린 골프와 골프용품, 골프예약 플랫폼, 골프장 운영대행 등 다양한 사업을 전개하고 있습니다. 특히, 첨단 IT 기술에 스포츠와 헬스케어를 접목하는 등 디지털 혁신 가속화에 속도를 높이며 스포츠 업계의 게임 체인저로 기대를 모으고 있습니다.</p>
+          </div>
+          </section>
+          <div className = 'service-zone'>
+            <div className='title-box'>
+              <p>서비스 소개</p>
+              <h3>다양한 플랫폼을 통해<br/> 리얼하고 즐거운 경험을 연구합니다.</h3>
+            </div>
+          </div>
+
       </body>
     </div>
   );
