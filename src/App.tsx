@@ -1,6 +1,8 @@
 import  React,{ReactNode, useEffect, useState} from 'react';
 import './App.css';
 import {Routes , Route, Link} from 'react-router-dom'
+import data from './data';
+import Business from './scrollarea';
 
 function App() {
   let [Content , setContent] = useState(false);
@@ -18,6 +20,33 @@ function App() {
 
     let [style , setStyle] = useState(true);
     let [blinkcount, setBlinkCount] = useState(0);
+
+    const [info, setInfo] = useState(data);
+
+    const [position , setPosition] = useState(0);
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    console.log(scrollTop)
+
+    function onScroll(){
+      setPosition(window.scrollY);
+    }
+
+    useEffect(()=>{
+      window.addEventListener('scroll',onScroll);
+      return() => {
+        window.addEventListener('scroll',onScroll)
+      }
+    },[]);
+
+
+    interface infoProps{
+      id?: number;
+      title?: string;
+      content?: string;
+      img?: string;  
+    };
 
     //글자 지우기
     useEffect(()=>{
@@ -76,7 +105,6 @@ function App() {
           setFirstAfter(false);
           setSecondAfter(false);
           setI(i+1);
-          console.log(i)
       }
       if(i === completionWord.length-1){
         setI(0);
@@ -91,8 +119,8 @@ function App() {
     return (
     <div className = 'APP'>
       <header>
-        <div className ='head'>
-          <div className = 'logo'>
+        <div className ={scrollTop >= 1700 ? 'head dark-tem' : 'head'}>
+          <div className = {scrollTop >= 1700 ? 'logo logo-dark' : 'logo'}>
             <Link to='/'></Link>
           </div>
           <div className='top_nav'>
@@ -112,7 +140,7 @@ function App() {
             </div>
         </div>
       </header>
-      <body>
+      <body className = {scrollTop >= 1700 ? 'bg-black dark-tem' : scrollTop >= 800 ? 'bg-grey' : ''} >
         <div className='inner'>
           <div className ='text'>
             <h4>{mainTitle}<i style={style ? {display : 'inline'} : {display : 'none'}}></i></h4>
@@ -136,10 +164,26 @@ function App() {
               <h3>다양한 플랫폼을 통해<br/> 리얼하고 즐거운 경험을 연구합니다.</h3>
             </div>
           </div>
-
+        <div className = "scroll-area">
+          {
+            info.map(info =>(
+              
+              <article className = 'business'>
+                <h4>{info.title}</h4>
+                <p>{info.content}</p>
+                <div className ='arrow'>
+                  <i></i><i></i><i></i>
+                </div>
+                <img src={info.img} className ="business-img"/>
+              </article>
+              
+            ))
+          }
+        </div>
       </body>
     </div>
   );
 }
+
 
 export default App;

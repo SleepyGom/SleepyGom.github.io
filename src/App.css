@@ -24,28 +24,51 @@ header{
   word-break: keep-all;
   font-weight: 600;
 }
+body{
+  background :#fff;
+  transition: all .5s;
+}
+
+.bg-grey{
+  background :#f5f6f9;
+}
+
+.bg-black{
+  background:#000;
+}
+
+.dark-tem *{
+ color:#fff;
+}
 
 .head{
   width:100%;
   height:70px;
   display:flex;
   justify-items: center;
-  margin : 0 50px;
   justify-content: space-between;
   backdrop-filter : blur(40px);
+  transition:all .5s;
 }
 
 .logo{
   width:100px;
   height:auto !important;
+  transition:all .5s;
+}
+.logo a{
+  width:150px;
+  display:block;
+  height:60px;
+  margin-left:50px;
   background-image : url('../public/img/kko_logo\(fin\).png');
   background-size : contain;
   background-repeat : no-repeat;
-  background-position: 0 20px;
+  background-position: 0px 20px;
+
 }
-.logo a{
-  display:block;
-  height:60px;
+.logo-dark a{
+  background-image:url('../public/img/kko_logo\(darktem\).png')
 }
 
 .top_nav{
@@ -100,6 +123,7 @@ header{
   align-items: center;
   flex-wrap : nowrap;
   margin:auto;
+  
 }
 .visual{
   flex-basis: 100%;
@@ -161,7 +185,8 @@ header{
 }
 .service-zone{
   width:100%;
-  margin:15% auto;
+  margin:15% auto 0;
+  display:flex;
 
 }
 .title-box{
@@ -177,4 +202,94 @@ header{
   font-size:50px;
   font-weight:bold;
   margin-top:30px;
+}
+.scroll-area{
+  overflow-x:hidden;
+  width:100%;
+  height:600px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.business{
+  margin-right:14px;
+  width:380px !important;
+  height:476px !important;
+  border-radius:30px;
+  background :#fff;
+  flex-shrink: 0;
+  padding : 30px 24px 0;
+  cursor: pointer;
+  position:relative;
+}
+.business h4{
+  font-size: 32px;
+  line-height:60px;
+  font-weight:bold;
+  margin-bottom:16px;
+  color:#000;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+.business p{
+  font-size:15.5px;
+  font-weight: normal;
+  line-height:26px;
+  white-space: normal;
+  color:#555;
+  margin-bottom:20px;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+  
+}
+.arrow{
+  width:40px;
+  height:40px;
+  position:relative;
+  border:2px solid #000;
+  border-radius : 50%;
+  overflow:hidden;
+}
+.arrow i{
+  display:block;
+  width:20px;
+  border : 0.5px solid #000;
+  border-radius: 30px;
+  position:absolute;
+  top:20px;
+  left:20px;
+  transform:translate(-50%,-50%);
+  transition:all .5s;
+}
+.arrow i:first-child{
+  transform:rotate(45deg) translate(-50%,-50%);
+  width:7px;
+  top:20px;
+  left:26px;
+}
+.arrow i:last-child{
+  transform:rotate(-45deg) translate(-50%,-50%);
+  width:7px;
+  top:20px;
+  left:27px;
+  background:#000;
+}
+.business:hover .arrow i{
+  transform:translate(-50%,-50%) scale(0.7);
+  margin-left: 60px;
+}
+.business:hover .arrow i:first-child{
+  transform:rotate(45deg) translate(-50%,-50%) scale(0.7);
+  top:21px;
+  left:25px;
+}
+.business:hover .arrow i:last-child{
+  transform :rotate(-45deg) translate(-50%,-50%) scale(0.7);
+  top:19px;
+  left:26px;
+}
+.business-img{
+  width:211px;
+  height:211px;
+  position:absolute;
+  bottom:5px;
+  right:10px;
 }
