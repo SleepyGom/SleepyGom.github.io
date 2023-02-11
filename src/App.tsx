@@ -1,4 +1,4 @@
-import  React,{ReactNode, useEffect, useState} from 'react';
+import  React,{ReactNode, useEffect, useRef, useState} from 'react';
 import './App.css';
 import {Routes , Route, Link} from 'react-router-dom'
 import data from './data';
@@ -27,19 +27,29 @@ function App() {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
+
+    const scrollRef = useRef<any>(null);
+    let y = -0.815 * scrollTop + 1412.395
     console.log(scrollTop)
 
     function onScroll(){
-      setPosition(window.scrollY);
+      if(scrollTop>=1733 || scrollTop <= 3133){
+        scrollRef.current.style =`margin-left : ${y}px`
+      }
+      if(scrollTop > 3133){
+        scrollRef.current.style ='margin-left : -1141px'
+      }
+      if(scrollTop < 1733){
+        scrollRef.current.style = 'margin-left : 0px'
+      }
     }
 
     useEffect(()=>{
       window.addEventListener('scroll',onScroll);
-      return() => {
-        window.addEventListener('scroll',onScroll)
+      return()=>{
+      window.addEventListener('scroll',onScroll);
       }
-    },[]);
-
+    })
 
     interface infoProps{
       id?: number;
@@ -164,7 +174,9 @@ function App() {
               <h3>다양한 플랫폼을 통해<br/> 리얼하고 즐거운 경험을 연구합니다.</h3>
             </div>
           </div>
-        <div className = "scroll-area">
+          <div className ='scroll-section'>
+        <div className = 'scroll-area'>
+          <div className="scroll-ani" ref={scrollRef}>
           {
             info.map(info =>(
               
@@ -179,6 +191,14 @@ function App() {
               
             ))
           }
+          </div>
+        </div>
+        </div>
+        <div className ='recurit'>
+          <div className ='title-box'>
+            <p>채용</p>
+            <h3>카카오 VX와 함께할<br/> 크루들을 기다리고 있습니다.</h3>
+          </div>
         </div>
       </body>
     </div>
