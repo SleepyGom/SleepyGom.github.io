@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e078e2ef.css",
+    "main.js": "/static/js/main.bace440c.js",
+    "static/js/787.f740b50d.chunk.js": "/static/js/787.f740b50d.chunk.js",
+    "static/media/kko_logo(fin).png": "/static/media/kko_logo(fin).ccc86714bdb1ff5f4bf1.png",
+    "index.html": "/index.html",
+    "main.e078e2ef.css.map": "/static/css/main.e078e2ef.css.map",
+    "main.bace440c.js.map": "/static/js/main.bace440c.js.map",
+    "787.f740b50d.chunk.js.map": "/static/js/787.f740b50d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e078e2ef.css",
+    "static/js/main.bace440c.js"
+  ]
+}
