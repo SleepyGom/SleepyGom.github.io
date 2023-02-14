@@ -2,7 +2,7 @@ import  React,{ReactNode, useEffect, useRef, useState} from 'react';
 import './App.css';
 import {Routes , Route, Link} from 'react-router-dom'
 import data from './data';
-import Business from './scrollarea';
+import interviewData from './interviewData';
 
 function App() {
   let [Content , setContent] = useState(false);
@@ -20,17 +20,15 @@ function App() {
 
     let [style , setStyle] = useState(true);
     let [blinkcount, setBlinkCount] = useState(0);
+    let [pagementCount,setPagementCount] = useState(1);
 
     const [info, setInfo] = useState(data);
+    const [interview , setInterview] = useState(interviewData);
 
-    const [position , setPosition] = useState(0);
-    const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
 
     const scrollRef = useRef<any>(null);
     let y = -0.815 * scrollTop + 1412.395
-    console.log(scrollTop)
 
     function onScroll(){
       if(scrollTop>=1733 || scrollTop <= 3133){
@@ -198,8 +196,36 @@ function App() {
           <div className ='title-box'>
             <p>채용</p>
             <h3>카카오 VX와 함께할<br/> 크루들을 기다리고 있습니다.</h3>
+            <div className = 'support'>
+              <p>지원하기</p>
+            </div>
           </div>
         </div>
+        <section className ='interview'>
+          <div className="interview-inner">
+          {
+            interview.map(inter =>(
+            
+            <div className ='interview-link'>
+              <div className ='interview-img' style={{backgroundImage :`url(${inter.img})`}}>
+
+              </div>
+              <div className ='interview-post'>
+              <h4>&quot;{inter.title}&quot;</h4>
+              <p style={{padding : `10%`}}>{inter.content}</p>
+              <div className="interview-name">
+                <h3 style ={{color:'#4a4647'}}>{inter.name}</h3>
+              </div>
+              </div>
+            </div>
+            ))
+          }
+          </div>
+        </section>
+        <div className='pagement'>
+            <h3>{pagementCount} / {interview.length}</h3>
+        </div>
+
       </body>
     </div>
   );
