@@ -340,6 +340,7 @@ body{
 .interview-inner{
   display:flex;
   justify-content: flex-start;
+  transition:all .5s;
 }
 
 .interview-link{
@@ -385,4 +386,121 @@ body{
   display : flex;
   width:100%;
   justify-content: center;
+  align-items: center;
+}
+.pagement h3{
+  margin : 0 20px;
+}
+.left-pagement{
+  width:30px;
+  height:30px;
+  position:relative;
+  cursor:pointer;
+}
+.left-pagement i{
+  display:block;
+  width:13px;
+  border : 2px solid #fff;
+  border-radius : 30px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  background:#fff;
+}
+.left-pagement i:first-child{
+  transform : rotate(45deg);
+  top:19px;
+  left:0px;
+}
+.left-pagement i:nth-child(2){
+  transform : rotate(-45deg);
+  top:9px;
+}
+.right-pagement{
+  width:30px;
+  height:30px;
+  position:relative;
+  cursor:pointer;
+}
+.right-pagement i{
+  display:block;
+  width:13px;
+  border : 2px solid #fff;
+  border-radius : 30px;
+  position:absolute;
+  top:0px;
+  right:0px;
+  background:#fff;
+}
+.right-pagement i:first-child{
+  transform : rotate(-45deg);
+  top:19px;
+  right:0px;
+}
+.right-pagement i:nth-child(2){
+  transform : rotate(45deg);
+  top:9px;
+}
+.footer{
+  padding :70px 0 80px;
+  background :#1d1d1f;
+  color:#f5f5f7;
+  margin-top: 30px;
+}
+.footer-inner{
+  padding : 0 50px;
+  display:flex;
+  justify-content: space-between;
+}
+.footer-left h1{
+  font-size:16px;
+}
+.footer-left p span{
+  font-size:14px;
+  color:#a1a1a6;
+}
+.footer-left p span:first-child::after{
+  content:'|';
+  margin: 0 10px;
+}
+.footer-left p span:nth-child(2)::after{
+  content:'|';
+  margin: 0 10px;
+}
+.footer-mn{
+  color:#f5f5f7;
+  font-size:13px;
+  font-weight: bold;
+}
+.footer-mn a{
+  margin-right:10px;
+}
+.footer-mn a::after{
+  content:'|';
+  margin-left:10px;
+}
+.footer-mn a:last-child::after{
+  content:'';
+}
+.footer-right{
+  font-size:10px;
+  line-height:16px;
+  display:flex;
+  align-items: flex-start;
+}
+.footer-right img{
+  width:65px;
+  height:65px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.footer-right p{
+  word-break: keep-all;
+  margin :0;
+  color:#4a4647;
+  max-width: 264px;
+}
+.footer-right strong{
+  font-weight: bold;
+  color:#4a4647;
 }

@@ -21,6 +21,9 @@ function App() {
     let [style , setStyle] = useState(true);
     let [blinkcount, setBlinkCount] = useState(0);
     let [pagementCount,setPagementCount] = useState(1);
+    let pagementRef = useRef<any>();
+    let leftpagementRef = useRef<any>();
+    let rightpagemnetRef = useRef<any>();
 
     const [info, setInfo] = useState(data);
     const [interview , setInterview] = useState(interviewData);
@@ -28,7 +31,31 @@ function App() {
     const scrollTop = document.documentElement.scrollTop;
 
     const scrollRef = useRef<any>(null);
-    let y = -0.815 * scrollTop + 1412.395
+    let y = -0.815 * scrollTop + 1412.395;
+
+
+    function leftclick(){
+      if(pagementCount == 3){
+        setPagementCount(2)
+        pagementRef.current.style=`transform : translateX(-100vw)`
+      }
+      if(pagementCount== 2){
+        setPagementCount(1)
+        pagementRef.current.style=`transform : translateX(0)`
+      }
+    }
+
+    function rightclick(){
+      if(pagementCount == 1){
+        setPagementCount(2)
+        pagementRef.current.style=`transform : translateX(-100vw)`
+      }
+      if(pagementCount == 2){
+        setPagementCount(3);
+        pagementRef.current.style=`transform : translateX(-200vw)`
+      }
+    }
+
 
     function onScroll(){
       if(scrollTop>=1733 || scrollTop <= 3133){
@@ -120,7 +147,6 @@ function App() {
       return () => clearInterval(interval); // 언마운트시 setInterval을 해제합니다
      }
     });
-
      
 
 
@@ -202,7 +228,7 @@ function App() {
           </div>
         </div>
         <section className ='interview'>
-          <div className="interview-inner">
+          <div className="interview-inner" ref ={pagementRef}>
           {
             interview.map(inter =>(
             
@@ -223,8 +249,39 @@ function App() {
           </div>
         </section>
         <div className='pagement'>
+          <div className = "left-pagement"  onClick={leftclick}><i></i><i></i></div>
             <h3>{pagementCount} / {interview.length}</h3>
+            <div className ='right-pagement' onClick={rightclick}><i></i><i></i></div>
         </div>
+        <section>
+          <div className ="footer">
+            <div className = "footer-inner">
+              <div className="footer-left">
+                <h1>(주)카카오VX 포트폴리오</h1>
+                <p>
+                  <span>대표이사 : ***</span>
+                  <span>사업자 등록 번호 : *** - ** - *****</span>
+                  <span>대표 번호 : **** - ****</span><br/>
+                  <span>경기도 성남시 분당구 **** *** ****</span><br/>
+                  <span>Copyright © Kakao VX Corp. All rights reserved</span>
+                </p>
+                <div className="footer-mn">
+                  <Link to="">통합이용약관</Link>
+                  <Link to="">위치기반서비스이용약관</Link>
+                  <Link to="">개인정보처리방침</Link>
+                  <Link to="">공지사항</Link>
+                </div>
+              </div>
+              <div className ="footer-right">
+                <span><img src="img/isms.png"/></span>
+                <div className="text-certification">
+                  <p><strong>인증범위</strong> 카카오VX 서비스 개발 및 운영(프렌즈스크린, 스마트홈트, 카카오골프예약, 카카오프렌즈 골프 등 서비스)</p>
+                  <p><strong>유효기간</strong> 2021-08-04 ~ 2024-08-03</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </body>
     </div>
