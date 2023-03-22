@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Company from './company';
+import ScrollToTop from './scrolltotop';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ root.render(
       <Route path='/' element={<App/>}/>
       <Route path='/company' element={<Company/>}/>
     </Routes>
+    <ScrollToTop/>
     </BrowserRouter>
   </React.StrictMode>
 );

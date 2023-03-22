@@ -33,7 +33,6 @@ function App() {
     const scrollRef = useRef<any>(null);
     let y = -0.815 * scrollTop + 1412.395;
 
-
     function leftclick(){
       if(pagementCount == 3){
         setPagementCount(2)
@@ -76,12 +75,7 @@ function App() {
       }
     })
 
-    interface infoProps{
-      id?: number;
-      title?: string;
-      content?: string;
-      img?: string;  
-    };
+
 
     //글자 지우기
     useEffect(()=>{
@@ -288,5 +282,38 @@ function App() {
   );
 }
 
-export default App
+function Footer (){
+  return(
+    <div className ="footer">
+    <div className = "footer-inner">
+      <div className="footer-left">
+        <h1>(주)카카오VX 포트폴리오</h1>
+        <p>
+          <span>대표이사 : ***</span>
+          <span>사업자 등록 번호 : *** - ** - *****</span>
+          <span>대표 번호 : **** - ****</span><br/>
+          <span>경기도 성남시 분당구 **** *** ****</span><br/>
+          <span>Copyright © Kakao VX Corp. All rights reserved</span>
+        </p>
+        <div className="footer-mn">
+          <Link to="">통합이용약관</Link>
+          <Link to="">위치기반서비스이용약관</Link>
+          <Link to="">개인정보처리방침</Link>
+          <Link to="">공지사항</Link>
+        </div>
+      </div>
+      <div className ="footer-right">
+        <span><img src="img/isms.png"/></span>
+        <div className="text-certification">
+          <p><strong>인증범위</strong> 카카오VX 서비스 개발 및 운영(프렌즈스크린, 스마트홈트, 카카오골프예약, 카카오프렌즈 골프 등 서비스)</p>
+          <p><strong>유효기간</strong> 2021-08-04 ~ 2024-08-03</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  )
+}
+
+export {App as default , Footer}
 
