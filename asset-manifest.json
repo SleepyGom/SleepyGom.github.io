@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.1d64e6e2.css",
-    "main.js": "/static/js/main.fce912c6.js",
+    "main.css": "/static/css/main.ccb931eb.css",
+    "main.js": "/static/js/main.43909b07.js",
     "static/js/787.f740b50d.chunk.js": "/static/js/787.f740b50d.chunk.js",
     "static/media/kko_logo(fin).png": "/static/media/kko_logo(fin).ccc86714bdb1ff5f4bf1.png",
     "index.html": "/index.html",
-    "main.1d64e6e2.css.map": "/static/css/main.1d64e6e2.css.map",
-    "main.fce912c6.js.map": "/static/js/main.fce912c6.js.map",
+    "main.ccb931eb.css.map": "/static/css/main.ccb931eb.css.map",
+    "main.43909b07.js.map": "/static/js/main.43909b07.js.map",
     "787.f740b50d.chunk.js.map": "/static/js/787.f740b50d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d64e6e2.css",
-    "static/js/main.fce912c6.js"
+    "static/css/main.ccb931eb.css",
+    "static/js/main.43909b07.js"
   ]
 }
