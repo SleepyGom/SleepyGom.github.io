@@ -26,7 +26,6 @@ function Company (){
         window.removeEventListener('scroll',isScroll);
         }
     },[]);
-    
 
     return(
         <div className ={scrollLength <= 700 ? 'company bg-black dark-tem' : 'company'}>
@@ -38,7 +37,7 @@ function Company (){
                 <div className='top_nav'>
                     <Link to='/company'>카카오 vx 소개</Link>
                     <div className='service' onClick={onToggle}>서비스</div>
-                    <Link to='/recruit'>크루영입</Link>
+                    <Link to='/recruit' >크루영입</Link>
                     <Link to='/alliance'>사업제휴</Link>
                 </div>
                 <div className={Content ? 'service_nav open' : 'service_nav'}>
@@ -95,7 +94,7 @@ function Company (){
             </div>
             <section className="company-list">
                 {
-                    AD.map(conAD => (
+                    AD.map((conAD,el) => (
                         <div className="company-list-box">
                         <h3>{conAD.name}</h3>
                         <article className="company-address">
@@ -104,10 +103,8 @@ function Company (){
                                 <strong><Link to={`${conAD.target}`} target='_blank'>카카오맵 바로가기</Link></strong>
                                 <Link to={`${conAD.target}`} target='_blank'><div className="circle"><i></i><i></i><i></i></div></Link>
                             </div>
-                        </article>
-                        <div className ="line"></div>
+                        </article>         
                     </div>
-    
                     ))
                 }
             </section>

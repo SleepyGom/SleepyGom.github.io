@@ -6,20 +6,20 @@ import Company from './company';
 import ScrollToTop from './scrolltotop';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import {Recruit} from './reqruit';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<App/>}/>
       <Route path='/company' element={<Company/>}/>
+      <Route path='/recruit' element ={<Recruit/>}/>
     </Routes>
     <ScrollToTop/>
     </BrowserRouter>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
